@@ -13,7 +13,7 @@ import kotlinx.coroutines.runBlocking
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 fun main() {
-    val port = "/dev/ttyUSB2"
+    val port = "/dev/serial/by-id/usb-Silicon_Labs_HubZ_Smart_Home_Controller_51600441-if01-port0" //"ttyUSB2"
 
     runBlocking {
         ZigbeeManager.start(

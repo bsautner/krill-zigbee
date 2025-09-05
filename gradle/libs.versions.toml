@@ -11,6 +11,7 @@ zigbee = "1.4.16.1"
 xstream = "1.4.21"
 log4j = "2.20.0"
 slf4j = "2.0.7"
+shadow = "9.1.0"
 
 [libraries]
 log4j = { module = "org.apache.logging.log4j:log4j-core", version.ref = "log4j" }
@@ -31,3 +32,4 @@ zigbeeBundle = ["zigbee", "zigbeeSerial", "zigbeeEmber"]
 
 [plugins]
 kotlinPluginSerialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
+shadow = { id = "com.gradleup.shadow", version.ref = "shadow" }
