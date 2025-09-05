@@ -7,16 +7,27 @@ kotlin = "2.2.0"
 kotlinxDatetime = "0.6.2"
 kotlinxSerializationJSON = "1.8.1"
 kotlinxCoroutines = "1.10.2"
+zigbee = "1.4.16.1"
+xstream = "1.4.21"
+log4j = "2.20.0"
+slf4j = "2.0.7"
 
 [libraries]
+log4j = { module = "org.apache.logging.log4j:log4j-core", version.ref = "log4j" }
+log4jSlf4jImpl = { module = "org.apache.logging.log4j:log4j-slf4j2-impl", version.ref = "log4j" }
+slf4jApi = { module = "org.slf4j:slf4j-api", version.ref = "slf4j" }
 kotlinGradlePlugin = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlin" }
 kotlinxDatetime = { module = "org.jetbrains.kotlinx:kotlinx-datetime", version.ref = "kotlinxDatetime" }
 kotlinxSerialization = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "kotlinxSerializationJSON" }
 kotlinxCoroutines = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "kotlinxCoroutines" }
-
+zigbee = { module = "com.zsmartsystems.zigbee:com.zsmartsystems.zigbee", version.ref = "zigbee" }
+zigbeeSerial = { module = "com.zsmartsystems.zigbee:com.zsmartsystems.zigbee.serial", version.ref = "zigbee" }
+zigbeeEmber = { module = "com.zsmartsystems.zigbee:com.zsmartsystems.zigbee.dongle.ember", version.ref = "zigbee" }
+xstream = { module = "com.thoughtworks.xstream:xstream", version.ref  = "xstream" }
 # Libraries can be bundled together for easier import
 [bundles]
 kotlinxEcosystem = ["kotlinxDatetime", "kotlinxSerialization", "kotlinxCoroutines"]
+zigbeeBundle = ["zigbee", "zigbeeSerial", "zigbeeEmber"]
 
 [plugins]
 kotlinPluginSerialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
