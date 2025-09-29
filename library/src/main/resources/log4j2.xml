@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Configuration status="WARN">
+<Configuration status="INFO">
     <Appenders>
         <!-- Console appender -->
         <Console name="StdOut" target="SYSTEM_OUT">
@@ -27,12 +27,12 @@
 
     <Loggers>
         <!-- ZigBee library logging -->
-        <Logger name="com.zsmartsystems.zigbee" level="DEBUG" additivity="true">
+        <Logger name="com.zsmartsystems.zigbee" level="INFO" additivity="true">
             <AppenderRef ref="StdOut"/>
         </Logger>
 
         <!-- EZSP specific logging -->
-        <Logger name="com.zsmartsystems.zigbee.dongle.ember.internal.ash" level="DEBUG" additivity="true">
+        <Logger name="com.zsmartsystems.zigbee.dongle.ember.internal.ash" level="INFO" additivity="true">
             <AppenderRef ref="EzspFile"/>
         </Logger>
 
@@ -40,7 +40,7 @@
         <Logger name="org.apache.commons" level="OFF"/>
 
         <!-- Root logger -->
-        <Root level="DEBUG">
+        <Root level="INFO">
             <AppenderRef ref="RollingFile"/>
         </Root>
     </Loggers>

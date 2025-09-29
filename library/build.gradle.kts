@@ -62,8 +62,6 @@ dependencies {
     implementation(libs.bundles.kotlinxEcosystem)
     implementation(libs.bundles.zigbeeBundle)
     implementation(libs.xstream)
-    implementation(libs.log4j)
-    implementation(libs.slf4jApi)
-    implementation(libs.log4jSlf4jImpl)
+
     testImplementation(kotlin("test"))
 }

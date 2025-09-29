@@ -23,12 +23,12 @@ import io.github.bsautner.ZigBeeDataStore
 import java.util.*
 import javax.security.auth.callback.Callback
 
-object ZigbeeManager {
+class ZigbeeManager(val port: String) {
     lateinit var networkManager: ZigBeeNetworkManager
 
     val transportOptions: TransportConfig = TransportConfig()
     fun start(
-        serialPortName: String,
+
         serialBaud: Int,
         dongleName: DongleName,
         power: Int,
@@ -43,7 +43,7 @@ object ZigbeeManager {
                 FlowControl.FLOWCONTROL_OUT_NONE
             }
         }
-        val serialPort: ZigBeePort = ZigBeeSerialPort(serialPortName, serialBaud, flowControl)
+        val serialPort: ZigBeePort = ZigBeeSerialPort(port, serialBaud, flowControl)
         val dongle: ZigBeeTransportTransmit = when (dongleName) {
             DongleName.EMBER -> {
                 val emberDongle = ZigBeeDongleEzsp(serialPort)
@@ -421,7 +421,7 @@ class CommandListener(val callback: (ZigBeeCommand) -> Unit) : ZigBeeCommandList
 class NodeListener : ZigBeeNetworkNodeListener {
     override fun nodeAdded(node: ZigBeeNode) {
         println("NEW NODE ADDED: ${node.ieeeAddress} at network address ${node.networkAddress}")
-        ZigbeeManager.listNodes()
+        //ZigbeeManager.listNodes()
     }
 
     override fun nodeRemoved(node: ZigBeeNode) {

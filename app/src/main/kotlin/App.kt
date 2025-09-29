@@ -16,8 +16,10 @@ fun main() {
     val port = "/dev/serial/by-id/usb-Silicon_Labs_HubZ_Smart_Home_Controller_51600441-if01-port0" //"ttyUSB2"
 
     runBlocking {
-        ZigbeeManager.start(
-            serialPortName = port,
+        val zigbeeManager = ZigbeeManager(port)
+
+            zigbeeManager.start(
+
             serialBaud = 57600,
             dongleName = DongleName.EMBER,
             power = 8
@@ -32,7 +34,7 @@ fun main() {
         delay(5000)
 
         // List all nodes to see your smart plug
-        ZigbeeManager.listNodes()
+        zigbeeManager.listNodes()
 
         // Example: Control your smart plug with network address 0x0FF9
         val smartPlugAddress = 0x0FF9
@@ -41,25 +43,25 @@ fun main() {
 
         while (true) {
             println("\n=== Testing Smart Plug Control ===")
-            ZigbeeManager.listNodes()
+            zigbeeManager.listNodes()
             // Turn ON the smart plug
             println("Turning ON smart plug...")
-            val onResult = ZigbeeManager.turnOn(smartPlugAddress)
+            val onResult = zigbeeManager.turnOn(smartPlugAddress)
             println("Turn ON result: $onResult")
 
             delay(3000) // Wait 3 seconds
 
             // Turn OFF the smart plug
             println("Turning OFF smart plug...")
-            val offResult = ZigbeeManager.turnOff(smartPlugAddress)
+            val offResult = zigbeeManager.turnOff(smartPlugAddress)
             println("Turn OFF result: $offResult")
 
             // Alternative: You can also use hex string addresses
             println("\nAlternative using hex string:")
             delay(2000)
-            ZigbeeManager.turnOnByHex("0FF9")
+            zigbeeManager.turnOnByHex("0FF9")
             delay(2000)
-            ZigbeeManager.turnOffByHex("0FF9")
+            zigbeeManager.turnOffByHex("0FF9")
         }
     }
 }
