@@ -19,7 +19,6 @@ tasks.shadowJar {
     mergeServiceFiles()
 }
 
-import com.vanniktech.maven.publish.SonatypeHost
 
 mavenPublishing {
     // Publish & auto-release via Central Portal
@@ -61,7 +60,7 @@ mavenPublishing {
 
     // Publish the shaded jar *in addition* as a classifier (optional)
     // so consumers can choose it explicitly:
-    configure(externalPublications = true) // allows adding extra artifacts
+    //configure(externalPublications = true) // allows adding extra artifacts
 }
 
 publishing {
