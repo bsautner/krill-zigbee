@@ -11,13 +11,9 @@ plugins {
 // Use a group that starts with your registered namespace.
 // Keep it consistent across the project.
 group = "io.github.bsautner"              // or "io.github.bsautner.krill"
-version = "0.1.0"                         // remove -SNAPSHOT for releases
+version = "0.0.1"                         // remove -SNAPSHOT for releases
 
-// Regular jar is the main artifact; keep shadow as an extra (optional)
-tasks.shadowJar {
-    archiveClassifier.set("all")          // don't replace the main jar
-    mergeServiceFiles()
-}
+
 
 
 mavenPublishing {
@@ -58,20 +54,9 @@ mavenPublishing {
         }
     }
 
-    // Publish the shaded jar *in addition* as a classifier (optional)
-    // so consumers can choose it explicitly:
-    //configure(externalPublications = true) // allows adding extra artifacts
+
 }
 
-publishing {
-    publications {
-        withType<MavenPublication>().configureEach {
-            // Attach the shadow (all) jar as an additional artifact
-            // without replacing the main jar uploaded by the plugin.
-            artifact(tasks.named("shadowJar"))
-        }
-    }
-}
 
 dependencies {
     implementation(libs.kotlinxCoroutines)
